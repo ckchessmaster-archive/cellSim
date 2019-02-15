@@ -20,7 +20,8 @@ def main():
         # Force each tick to take no less than 1/20th of a second
         if diff < 0.05:
             time.sleep(0.05 - diff)
-  
-
+            
+    # End while True
+# end main()
           
 main()
