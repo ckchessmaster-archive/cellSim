@@ -6,7 +6,6 @@ Created on Fri Feb 15 10:58:30 2019
 """
 
 from cell import Cell
-import numpy as np
 
 class World:
     def __init__(self, maxWorldSize = 100):
@@ -16,13 +15,16 @@ class World:
         self.maxWorldSize = maxWorldSize
         
         # Create the first cell and initialize cell list
-        self.cells = np.array([Cell(0,0)])
+        self.cells = [Cell(100,100, 10000000, self)]
         
     # End __init__()
         
         
     def tick(self):
-        for cell in self.cells:
-            cell.tick()
+        for i, cell in enumerate(self.cells):
+            result = cell.tick()
+            if result == 1:
+                del self.cells[i]
+        #end for cell in cells
     # End tick()
 # End World

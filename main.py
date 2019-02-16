@@ -7,13 +7,16 @@ Created on Fri Feb 15 10:40:47 2019
 
 import time
 from world import World
+import renderer
 
 def main():
     world = World()
+    renderer.init()
     
     while True:
         start = time.time()
         world.tick()
+        renderer.render(world)
         end = time.time()
         diff = end - start
         
@@ -22,6 +25,8 @@ def main():
             time.sleep(0.05 - diff)
             
     # End while True
+    
+    renderer.end()
 # end main()
           
 main()
