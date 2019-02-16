@@ -7,16 +7,15 @@ Created on Fri Feb 15 10:40:47 2019
 
 import time
 from world import World
-import renderer
+from graphics import GraphWin
 
 def main():
-    world = World()
-    renderer.init()
+    window = GraphWin('CellSim', 500, 500) 
+    world = World(window)
     
     while True:
         start = time.time()
         world.tick()
-        renderer.render(world)
         end = time.time()
         diff = end - start
         
@@ -24,9 +23,8 @@ def main():
         if diff < 0.05:
             time.sleep(0.05 - diff)
             
-    # End while True
-    
-    renderer.end()
+    # End while True    
+    window.close()
 # end main()
           
 main()
